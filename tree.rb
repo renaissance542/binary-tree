@@ -13,7 +13,7 @@ class Tree
     @root = build_tree(arr.sort!.tap(&:uniq!), 0, (arr.size - 1))
   end
 
-  def build_tree(arr, first, last)
+  def build_tree(arr, first = 0, last = arr.size - 1)
     return nil if first > last
 
     mid = (first + last) / 2
@@ -114,12 +114,19 @@ class Tree
     depth
   end
 
-  # the difference between heights of left subtree
-  # and right subtree of every node is not more than 1
-  def balanced?
+  # left and right subtrees have height difference of 1 or less
+  # and left and right subtrees are also balanced
+  def balanced?(node = @root)
+    return true if node.nil?
 
+    bal = (height(node.left) - height(node.right)).between?(-1, 1)
+    balanced?(node.left) && balanced?(node.right) && bal
   end
-  
+
+  def rebalance
+    @root = build_tree(to_a)
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
