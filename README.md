@@ -1,7 +1,7 @@
 # binary-tree
 Created my own binary tree with associated methods
 
-Live on Replit: xxxxx
+Live on Replit: https://replit.com/@PhilippeRoy1/binary-tree
 
 Reflection: This project gave me plenty of practice
 with recursive methods and binary tree structures.
@@ -15,3 +15,5 @@ I disabled Rubocop's ClassLength metric and didn't think
 about how to break up this code into an additional module
 or class.  That is a lingering question that might get
 addressed in a future lesson.
+
+Note:  I wrote everything except the #pretty_print function, which was provided by TOP
